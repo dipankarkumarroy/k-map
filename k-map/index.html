@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Karnaugh Map Solver</title>
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Allows the user to input values for a Karnaugh map and recieve boolean expressions for the output.">
+    
+  </head>
+  <body>
+
+
+    <main id="main">
+      <div id="kmap-div">
+        <header id="kmap-title">Karnaugh Map</header>
+        <div id="kmap-container">
+          <table id="kmap" class="kmap-table"></table>
+        </div>
+      </div>
+      <div id="information">
+        <div id="inputs">
+          <div id="attributes" class="info-section">
+            <header class="info-header">Function Info</header>
+            <div class="entry">
+              <label for="return-name" class="entry-label">Output Name:</label>
+              <label class="info-tooltip">One string for function result</label>
+              <input id="return-name" type="text" size="30" value="f" class="input-field">
+            </div>
+            <div class="entry">
+              <label for="variable-names" class="entry-label">Input Names:</label>
+              <label class="info-tooltip">Comma separated list of variable names</label>
+              <input id="variable-names" type="text" size="30" value="a, b, c, d" class="input-field">
+            </div>
+          </div>
+
+          <div id="settings" class="info-section">
+            <header class="info-header">Settings:</header>
+            <label class="setting-label"><input type="radio" name="method" value="sop" checked> Sum of Products</label>
+            <label class="setting-label"><input type="radio" name="method" value="pos"> Product of Sums</label>
+            <label class="info-tooltip"> (Give input slow and small,otherwise it gives CODE_HUNG)</label>
+            <label class="setting-label"><input type="checkbox" name="draw-kmap" value="map" checked> Draw Kmap</label>
+            <label class="setting-label"><input type="checkbox" name="draw-groups" value="draw" checked> Draw groupings</label>
+          </div>
+
+          <div class="clear-button-container">
+            <button id="clear-kmap" class="clear-button" onclick="javascript:resetEverything()">Reset Everything</button>
+          </div>
+        </div>
+
+        <div id="terms" class="info-section">
+          <header class="info-header">Terms</header>
+          <div class="entry">
+            <label for="minterms" class="entry-label">Minterms:</label>
+            <label class="info-tooltip">Comma separated list of numbers</label>
+            <input id="minterms" type="text" size="30" value="" class="input-field">
+          </div>
+          <div class="entry">
+            <label for="dont-cares" class="entry-label">Don't Cares:</label>
+            <label class="info-tooltip">Comma separated list of numbers</label>
+            <input id="dont-cares" type="text" size="30" value="" class="input-field">
+          </div>
+        
+          <div class="clear-button-container">
+            <button id="clear-terms" class="clear-button" onclick="javascript:resetTerms()">Reset Terms</button>
+          </div>
+        </div>
+
+        <div id="solutions" class="info-section">
+          <header class="info-header">Solutions:</header>
+          <div class="solution">
+            <label for="generic-solution" class="solution-label">Generic:</label>
+            <textarea cols="80" rows="4" wrap="soft" class="solution-field" readonly id="generic-solution"></textarea>
+          </div>
+          <div class="solution">
+            <label for="vhdl-solution" class="solution-label">VHDL:</label>
+            <textarea cols="80" rows="4" wrap="soft" class="solution-field" readonly id="vhdl-solution"></textarea>
+          </div>
+          <div class="solution">
+            <label for="verilog-solution" class="solution-label">Verilog:</label>
+            <textarea cols="80" rows="4" wrap="soft" class="solution-field" readonly id="verilog-solution"></textarea>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="footer">
+      
+      </div>
+    </main>
+  </body>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="jquery-3.4.1.min.js"></script>
+  <script src="control.js"></script>
+  <script src="main.js"></script>
+  
+</html>
